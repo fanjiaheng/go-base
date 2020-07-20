@@ -39,9 +39,11 @@ func process(conn net.Conn) {
 	defer conn.Close() // 关闭连接
 
 	for {
+		fmt.Println("FFFFFFFFFFFF")
 		reader := bufio.NewReader(conn)
 		var buf [128]byte
 		n, err := reader.Read(buf[:])
+		fmt.Println("HHHHHHHHHHHH")
 		if err != nil {
 			fmt.Println("read client failed, err: ", err)
 			break
