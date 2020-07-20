@@ -1,4 +1,4 @@
-package tcp
+package udp
 
 import (
 	"fmt"
@@ -6,7 +6,6 @@ import (
 )
 
 func TestClient(t *testing.T) {
-	fmt.Println("******Tcp客户端测试******")
-
+	fmt.Println("*******Udp客户端测试**********")
 	MainClient()
 }

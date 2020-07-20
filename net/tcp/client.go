@@ -1,11 +1,9 @@
 package tcp
 
 import (
-	"bufio"
 	"fmt"
 	"net"
-	"os"
-	"strings"
+	"time"
 )
 
 func MainClient() {
@@ -16,16 +14,8 @@ func MainClient() {
 	}
 
 	defer conn.Close()
-	reader := bufio.NewReader(os.Stdin)
 	for {
-		input, _ := reader.ReadString('\n') //读入用户输入
-		inputInfo := strings.Trim(input, "\r\n")
-		fmt.Println(inputInfo)
-		if strings.ToUpper(inputInfo) == "Q" { //输入q退出
-			return
-		}
-
-		_, err = conn.Write([]byte(inputInfo))
+		_, err = conn.Write([]byte("hello world"))
 		if err != nil {
 			fmt.Println("send failed, err: ", err)
 			return
@@ -38,5 +28,6 @@ func MainClient() {
 			return
 		}
 		fmt.Println(string(buf[:n]))
+		time.Sleep(time.Second * 3)
 	}
 }
